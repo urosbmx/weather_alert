@@ -23,11 +23,12 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v2.0
         with:
-            API_KEY: ${{ secrets.API_KEY }}
-            EMAIL: ${{ secrets.EMAIL }}
-            PASSWORD: ${{ secrets.PASSWORD }}
-            TO: ${{ secrets.TO }}
-            URL: "http://api.openweathermap.org"
+            envkey_API_KEY: ${{ secrets.API_KEY }}
+            envkey_EMAIL: ${{ secrets.EMAIL }}
+            envkey_PASSWORD: ${{ secrets.PASSWORD }}
+            envkey_TO: ${{ secrets.TO }}
+            envkey_URL: "http://api.openweathermap.org"
+            file_name: .env
 
       - name: Send Email
         run: python main.py
