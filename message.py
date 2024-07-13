@@ -5,7 +5,7 @@ def message(date, current, fill):
 
     message = (f"\n"
                f"VREMENSKA PROGNOZA\b\n"
-               f"Vremenska prognoza za {rotate},\n"
+               f"Vremenska prognoza za {data},\n"
                f"Trenutna temperatura je {current}\n"
                f"Osecaj je napolju je {fill}\n")
 
