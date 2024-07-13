@@ -1,33 +1,33 @@
 name: Send Email
 
 on:
-  workflow_dispatch
-
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Set up Python 3.12
       uses: actions/setup-python@v3
       with:
-        python-version: "3.12"
+        python-version: '3.12'
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install requirements.txt
-    - name: 'Create env file'
+        pip install -r requirements.txt
+
+    - name: Create .env file
       run: |
-          touch .env
-          echo API_KEY=${{ secrets.API_KEY }} >> .env
-          echo EMAIL=${{ secrets.EMAIL }} >> .env
-          echo PASSWORD=${{ secrets.PASSWORD }} >> .env
-          echo TO=${{ secrets.TO }} >> .env
-          echo URL=http://api.openweathermap.org >> .env
-          cat .env
-    - name: 'Send Email'
+        echo "API_KEY=${{ secrets.API_KEY }}" > .env
+        echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+        echo "TO=${{ secrets.TO }}" >> .env
+        echo "URL=http://api.openweathermap.org" >> .env
+        cat .env
+
+    - name: Send Email
       run: python main.py
-    
