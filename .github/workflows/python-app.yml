@@ -30,6 +30,7 @@ jobs:
           envkey_TO: ${{ secrets.TO }}
           envkey_URL: "http://api.openweathermap.org"
           file_name: .env
+          fail_on_empty: true
 
       - name: Send Email
         run: python main.py
